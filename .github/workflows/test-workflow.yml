@@ -1,0 +1,16 @@
+name: Test Workflow
+on: push
+jobs:
+  jasmine-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Code
+        uses: actions/checkout@v3
+      - name: Install NodeJS
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install all dependecies
+        run: npm ci
+      - name: Run Tests
+        run: npm run test
